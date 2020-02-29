@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GameCategories } from '../app/shared/game-categories';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'casino-web';
+  gameCategories = GameCategories;
 }

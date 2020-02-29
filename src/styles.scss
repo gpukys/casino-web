@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+$primary-color: #8DC63F;
+$accent-color: #373737;
+$background-color: #FCFCFC;
+
+html, body {
+  margin: 0;
+  height: 100vh;
+}
+
+a, a:link, a:visited, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}

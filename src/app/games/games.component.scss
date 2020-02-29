@@ -1,0 +1,12 @@
+@import '../../styles.scss';
+
+.container {
+  display: flex;
+  overflow: auto;
+  background: $background-color;
+  padding-top: 86px;
+  height: 100%;
+  app-game-item {
+    margin-bottom: 36px;
+  }
+}

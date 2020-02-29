@@ -1,0 +1,17 @@
+@import '../styles.scss';
+
+nav {
+  background: $accent-color;
+  height: 50px;
+  font-size: 22px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  a {
+    color: #FFF;
+    height: 100%;
+    &.router-link-active, &:hover {
+      background: $primary-color;
+    }
+  }
+}
