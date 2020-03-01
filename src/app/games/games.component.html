@@ -1,3 +1,14 @@
-<div class="container" fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="16px">
-  <app-game-item *ngFor="let game of games" [game]="game"></app-game-item>
+<div class="container">
+  <div class="grid" *ngIf="games?.length > 0; else noGames">
+    <app-game-item *ngFor="let game of games"
+                   [game]="game"
+                   [jackpot]="jackpots && jackpots[game.id]"
+                   [hideRibbonCategory]="hideRibbonCategory">
+    </app-game-item>
+  </div>
+  <ng-template #noGames>
+    <div class="no-games">
+      <h2>Sorry, no games in this category :(</h2>
+    </div>
+  </ng-template>
 </div>

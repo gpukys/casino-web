@@ -2,16 +2,68 @@
 
 nav {
   background: $accent-color;
-  height: 50px;
-  font-size: 22px;
-  position: fixed;
-  width: 100%;
-  top: 0;
+  font-size: 19px;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   a {
     color: #FFF;
     height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex: 1 1 100%;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
     &.router-link-active, &:hover {
       background: $primary-color;
     }
+  }
+}
+
+nav.desktop {
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  @media screen and (max-width: 960px) {
+    justify-content: flex-start;
+  }
+  a {
+    @media screen and (max-width: 960px) {
+      display: none
+    }
+  }
+  img.menu {
+    display: none;
+    @media screen and (max-width: 960px) {
+      display: block;
+      margin-left: 16px;
+    }
+  }
+}
+
+nav.mobile {
+  flex-direction: column;
+  width: 250px;
+  position: fixed;
+  height: 100%;
+  right: 0;
+  top: 0;
+  animation-duration: 0.3s;
+  animation-name: opensidebar;
+  @media screen and (min-width: 960px) {
+    display: none
+  }
+}
+
+@keyframes opensidebar {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 250px;
   }
 }

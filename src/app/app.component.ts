@@ -8,4 +8,5 @@ import { GameCategories } from '../app/shared/game-categories';
 })
 export class AppComponent {
   gameCategories = GameCategories;
+  menuOpened = false;
 }

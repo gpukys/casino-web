@@ -8,11 +8,16 @@ import { GamesResponse } from '../games.service';
 })
 export class GameItemComponent implements OnInit {
 
+  showRibbon: string;
+
   constructor() { }
 
   @Input() game: GamesResponse;
+  @Input() hideRibbonCategory: string;
+  @Input() jackpot: number;
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.showRibbon = this.game.categories.filter(e => (e === 'new' || e === 'top') && e !== this.hideRibbonCategory)[0];
   }
 
 }

@@ -1,9 +1,16 @@
-<nav fxLayout="row" fxLayoutAlign="space-between center">
+<nav class="desktop">
   <a *ngFor="let game of gameCategories"
      [routerLink]="['/' + game.id ]"
-     routerLinkActive="router-link-active"
-     fxFlex="1 1 100"
-     fxLayoutAlign="center center">
+     routerLinkActive="router-link-active">
+    {{game.title}}
+  </a>
+  <img class="menu" (click)="menuOpened = !menuOpened" src="../assets/menu.svg" alt="Menu">
+</nav>
+<nav class="mobile" *ngIf="menuOpened">
+  <a *ngFor="let game of gameCategories"
+     [routerLink]="['/' + game.id ]"
+     (click)="menuOpened = false"
+     routerLinkActive="router-link-active">
     {{game.title}}
   </a>
 </nav>

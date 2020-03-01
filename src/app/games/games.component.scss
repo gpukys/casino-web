@@ -1,12 +1,19 @@
 @import '../../styles.scss';
 
 .container {
-  display: flex;
-  overflow: auto;
   background: $background-color;
-  padding-top: 86px;
-  height: 100%;
-  app-game-item {
-    margin-bottom: 36px;
+  padding: 86px 25px 36px 25px;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-gap: 36px 8px;
+    app-game-item {
+      margin: 0 auto;
+    }
   }
+}
+
+.no-games {
+  height: calc(100vh - 142px);
+  text-align: center;
 }

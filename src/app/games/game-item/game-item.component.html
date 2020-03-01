@@ -1,4 +1,18 @@
 
-<div>
-  <img src="{{game.image}}" alt="{{game.name}}">
+<div class="container">
+  <div class="ribbon" *ngIf="showRibbon">
+    <span>{{showRibbon | uppercase}}</span>
+  </div>
+  <div class="info jackpot" *ngIf="jackpot">
+    £{{jackpot}}
+  </div>
+  <img class="background" src="{{game.image}}" alt="{{game.name}}">
+  <div class="overlay">
+    <div class="circle">
+      <img src="../../../assets/play.svg" alt="Play {{game.name}}">
+    </div>
+    <div class="info title">
+      {{game.name | uppercase}}
+    </div>
+  </div>
 </div>
