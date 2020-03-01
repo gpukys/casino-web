@@ -1,35 +1,56 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, tick, fakeAsync, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { routes } from './app-routing.module';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { GamesComponent } from './games/games.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let router: Router;
+  let location: Location;
+  let compiled;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule.withRoutes(routes),
+        HttpClientTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        GamesComponent
       ],
+      providers: [
+        Location
+      ]
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(() => {
+    router = TestBed.inject(Router);
+    location = TestBed.inject(Location);
+    TestBed.inject(HttpTestingController);
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    compiled = fixture.nativeElement;
   });
 
-  it(`should have as title 'casino-web'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('casino-web');
-  });
+  it('navigate to "" redirects you to /top', fakeAsync(() => {
+    router.initialNavigation();
+    router.navigate(['']);
+    tick();
+    expect(location.path()).toBe('/top');
+  }));
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should render the navbar with all the categories', () => {
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('casino-web app is running!');
+    component.gameCategories.forEach((e, idx) => {
+      expect(compiled.querySelectorAll('nav a')[idx].textContent).toContain(e.title);
+    });
+    expect(compiled.querySelectorAll('nav a').length).toEqual(component.gameCategories.length);
   });
 });

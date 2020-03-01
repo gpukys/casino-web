@@ -8,7 +8,7 @@ import { GamesResponse } from '../games.service';
 })
 export class GameItemComponent implements OnInit {
 
-  showRibbon: string;
+  ribbonLabel: string;
 
   constructor() { }
 
@@ -17,7 +17,7 @@ export class GameItemComponent implements OnInit {
   @Input() jackpot: number;
 
   ngOnInit() {
-    this.showRibbon = this.game.categories.filter(e => (e === 'new' || e === 'top') && e !== this.hideRibbonCategory)[0];
+    this.ribbonLabel = this.game.categories.filter(e => (e === 'new' || e === 'top') && e !== this.hideRibbonCategory)[0];
   }
 
 }

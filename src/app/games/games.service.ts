@@ -8,8 +8,8 @@ import { map } from 'rxjs/operators';
 })
 export class GamesService {
 
-  private gamesUrl = 'http://stage.whgstage.com/front-end-test/games.php/';
-  private jackpotUrl = 'http://stage.whgstage.com/front-end-test/jackpots.php';
+  readonly gamesUrl = 'http://stage.whgstage.com/front-end-test/games.php/';
+  readonly jackpotUrl = 'http://stage.whgstage.com/front-end-test/jackpots.php';
 
   constructor(
     private http: HttpClient

@@ -51,7 +51,7 @@ export class GamesComponent implements OnInit, OnDestroy {
     }
   }
 
-  private isValidRoute(category): boolean {
+  isValidRoute(category): boolean {
     return this.gameCategories.filter(item => item.id === category).length > 0;
   }
 
